@@ -20,3 +20,24 @@ server.listen(PORT, HOST, function () {
     console.log(`           ${server.url}/products`.brightMagenta);
     console.log(`           Method: GET, POST, DELETE`.brightBlue)
 });
+
+server
+	// Allow the use of POST
+	.use(restify.fullResponse())
+
+	// Maps req.body to req.params so there is no switching between them
+    .use(restify.bodyParser());
+
+
+// @desc       Get all products in the system
+// @endpoint   http://127.0.0.1:3009/products
+// @method     GET
+server.get('/products', function (req, res, next) {
+	// Find every entity within the given collection
+	productsSave.find({}, function (error, products) {
+		console.log(`Received GET request /products`);
+		// Return all of the products in the system
+		res.send({ count: products.length, products });
+		console.log(`Get: ${++getCount}`);
+	});
+});
