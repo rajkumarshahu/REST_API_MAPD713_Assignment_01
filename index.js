@@ -41,3 +41,40 @@ server.get('/products', function (req, res, next) {
 		console.log(`Get: ${++getCount}`);
 	});
 });
+
+
+// @desc       Create a new product
+// @endpoint   http://127.0.0.1:3009/products
+// @method     POST
+server.post('/products', function (req, res, next) {
+	// Make sure product is defined
+	if (req.params.product === undefined) {
+		// If there are any errors, pass them to next in the correct format
+		return next(new restify.InvalidArgumentError('product must be supplied'));
+	}
+	if (req.params.price === undefined) {
+		// If there are any errors, pass them to next in the correct format
+		return next(new restify.InvalidArgumentError('price must be supplied'));
+    }
+    if (req.params.category === undefined) {
+		// If there are any errors, pass them to next in the correct format
+		return next(new restify.InvalidArgumentError('category must be supplied'));
+	}
+	var newProduct = {
+		product: req.params.product,
+		price: req.params.price,
+		category: req.params.category,
+    };
+	// Create the product using the persistence engine
+	productsSave.create(newProduct, function (error, product) {
+		// If there are any errors, pass them to next in the correct format
+		if (error)
+			return next(
+				new restify.InvalidArgumentError(JSON.stringify(error.errors))
+			);
+
+		// Send the user if no issues
+		res.send(201, product);
+        console.log(`Processed Request Count >>>>> Post: ${++postCount}`.bold.green);
+	});
+});
