@@ -1,0 +1,16 @@
+{
+  "name": "rest-api-assignment1",
+  "version": "1.0.0",
+  "description": "REST API Products - Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raj Kumar Shahu <rshahu@my.centinnialcollege.ca>, Supriya Gadkari <sgadkari1@my.centinnialcollege.ca>",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "restify": "4.1.1",
+    "save": "2.3.0"
+  }
+}
