@@ -36,7 +36,7 @@ server.get('/products', function (req, res, next) {
 		console.log(`Received GET request /products`);
 		// Return all of the products in the system
 		res.send({ count: products.length, products });
-		console.log(`Processed Request Count >>>> Get: ${++getCount}`.bold.green);
+		console.log(`Processed Request Count >>>> Get: ${++getCount}`.bold.blue);
 	});
 });
 
