@@ -5,8 +5,14 @@ requests and JSON data format.
 
 - Following are the sequence diagrams, reflecting the application logic
 
+## GET
+
 ![GET](assets/GET.svg)
 
+## POST
+
 ![POST](assets/POST.svg)
+
+## DELETE
 
 ![DELETE](assets/DELETE.svg)
